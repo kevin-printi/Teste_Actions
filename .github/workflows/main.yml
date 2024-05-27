@@ -32,17 +32,6 @@ jobs:
       - name: Run E2E tests
         if: always()
         run: ${{ github.event.inputs.cli }}
-            
-      - name: Run generate report
-        if: always()
-        run: yarn allure generate ./allure-results/ -o ./report-server
-        
-      - name: Save Cypress report artifact
-        if: always() 
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-report
-          path: ./report-server/
 
       - name: Load test report history
         uses: actions/checkout@v3
